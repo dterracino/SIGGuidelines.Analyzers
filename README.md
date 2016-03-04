@@ -2,12 +2,12 @@
 ## A set of diagnostic analyzers inspired by the book Building Maintainable Software
 This repository contains an example implementation of diagnostic rules for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Writing Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser and his colleagues from the [Software Improvement Group](https://www.sig.eu).
 
-The following guidelines from the book are implemented as diagnostic rules:
+The following guidelines from the book are implemented as diagnostic analyzers:
 
-- Write short units of code: limit the length of methods and constructors.
-- Write simple units of code: limit the number of branch points per method.
-- Keep unit interfaces small by extracting parameters into objects.
-- Separate concerns to avoid building large classes.
+- Write short units of code: limit the length of methods and constructors. (<= 15 LOC)
+- Write simple units of code: limit the number of branch points per method. (<= 4 branch points)
+- Keep unit interfaces small by extracting parameters into objects. (<= 4 parameters)
+- Separate concerns to avoid building large classes. (<= 400 LOC)
 
 This set of analyzers allows you to control compliance of C# code to these rules in the IDE, on the build server or other Code Quality Management systems that support diagnostic analyzers.
 
