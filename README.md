@@ -17,3 +17,8 @@ The following screenshots display the use of these analyzers in Visual Studio 20
 The diagnostic analyzers can be maintained as rulesets. Violations may be configured to lead to compiler warnings, errors or informationals.
 ![Visual Studio 2015](https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers/raw/master/Screenshot2.PNG "Visual Studio 2015")
 
+## NuGet Install
+To install SIGGuidelines.Analyzers, run the following command in the Package Manager Console:
+
+`Install-Package SIGGuidelines.Analyzers`
+
