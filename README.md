@@ -1,5 +1,5 @@
 # WritingMaintainableSoftware-Analyzers
-This repository contains an example implementation of diagnostic rules for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Writing Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser et al.
+This repository contains an example implementation of diagnostic rules for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Writing Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser et al ([Software Improvement Group](https://www.sig.eu)).
 
 The following guidelines from the book are implemented as diagnostic rules:
 
