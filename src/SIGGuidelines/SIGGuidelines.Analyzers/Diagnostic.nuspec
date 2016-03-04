@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SIGGuidelines.Analyzers</id>
+    <version>0.1.0.0</version>
+    <title>SIGGuidelines.Analyzers</title>
+    <authors>Pepijn van de Kamp</authors>
+    <owners>Pepijn van de Kamp</owners>
+    <projectUrl>https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SIGGuidelines.Analyzers</description>
+    <releaseNotes></releaseNotes>
+    <copyright></copyright>
+    <tags>SIGGuidelines.Analyzers, analyzers</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+  <!-- The convention for analyzers is to put language agnostic dlls in analyzers\portable50 and language specific analyzers in either analyzers\portable50\cs or analyzers\portable50\vb -->
+  <files>
+    <file src="*.dll" target="analyzers\dotnet\cs" exclude="**\Microsoft.CodeAnalysis.*;**\System.Collections.Immutable.*;**\System.Reflection.Metadata.*;**\System.Composition.*" />
+    <file src="tools\*.ps1" target="tools\" />
+  </files>
+</package>
