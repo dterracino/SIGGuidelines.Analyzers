@@ -14,6 +14,6 @@ This set of analyzers allows you to control compliance of C# code to these guide
 The following screenshots display the use of these analyzers in Visual Studio 2015:
 ![Visual Studio 2015](https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers/raw/master/Screenshot1.PNG "Visual Studio 2015")
 
-The diagnostic analyzers can be maintianed as rulesets. Violations may be configured to lead to compiler warnings, errors or informationals.
+The diagnostic analyzers can be maintained as rulesets. Violations may be configured to lead to compiler warnings, errors or informationals.
 ![Visual Studio 2015](https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers/raw/master/Screenshot2.PNG "Visual Studio 2015")
 
