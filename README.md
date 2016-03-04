@@ -1,5 +1,5 @@
 # WritingMaintainableSoftware-Analyzers
-This repository contains an example implementation of diagnostic rules for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Writing Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser et al ([Software Improvement Group](https://www.sig.eu)).
+This repository contains an example implementation of diagnostic rules for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Writing Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser and colleagues ([Software Improvement Group](https://www.sig.eu)).
 
 The following guidelines from the book are implemented as diagnostic rules:
 
@@ -7,3 +7,12 @@ The following guidelines from the book are implemented as diagnostic rules:
 - Write simple units of code: limit the number of branch points per method.
 - Keep unit interfaces small by extracting parameters into objects.
 - Separate concerns to avoid building large classes.
+
+This set of analyzers allows you to control compliance of C# code to these rules in the IDE, on the build server or other Code Quality Management systems that support diagnostic analyzers.
+
+The following screenshots display the use of these analyzers in Visual Studio 2015:
+![Visual Studio 2015](https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers/raw/master/Screenshot1.PNG "Visual Studio 2015")
+
+The diagnostic analyzers can be maintianed as rulesets. Violations may be configured to lead to compiler warnings, errors or informationals.
+![Visual Studio 2015](https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers/raw/master/Screenshot2.PNG "Visual Studio 2015")
+
