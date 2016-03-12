@@ -1,9 +1,10 @@
 # SIGGuidelines.Analyzers
 ## A set of diagnostic analyzers inspired by the book: Building Maintainable Software
-This repository contains an example implementation of diagnostic analyzers for Visual Studio 2015 ([Roslyn analyzers](https://msdn.microsoft.com/en-us/magazine/dn879356.aspx)) inspired by the book [Building Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser and others from the [Software Improvement Group](https://www.sig.eu). By referencing this set of diagnostic analyzers from your C# code-base you will receive instant feedback on violations of a subset of the guidelines from within Visual Studio.
+`SIGGuidelines.Analyzers` is a Visual Studio 2015 extension that provides on-the-fly feedback to developers on violations in `C#` code to a subset of the guidelines presented in the book [Building Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser and other consultants from the [Software Improvement Group](https://www.sig.eu). 
+
 
 ## Installation
-To install SIGGuidelines.Analyzers, run the following command in the Package Manager Console:
+To install SIGGuidelines.Analyzers package to your project, run the following command in the Package Manager Console:
 
 `Install-Package SIGGuidelines.Analyzers`
 
