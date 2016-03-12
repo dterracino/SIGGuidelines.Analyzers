@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SIGGuidelines.Metrics;
 
-namespace SIGGuidelines.Analyzers
+namespace SIGGuidelines.Analyzers.DiagnosticAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class UnitInterfacingAnalyzer : DiagnosticAnalyzer
@@ -26,9 +26,9 @@ namespace SIGGuidelines.Analyzers
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as MethodDeclarationSyntax).ParameterList), SyntaxKind.MethodDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as IndexerDeclarationSyntax).ParameterList), SyntaxKind.IndexerDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as ConstructorDeclarationSyntax).ParameterList), SyntaxKind.ConstructorDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as MethodDeclarationSyntax).ParameterList), SyntaxKind.MethodDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as IndexerDeclarationSyntax).ParameterList), SyntaxKind.IndexerDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as ConstructorDeclarationSyntax).ParameterList), SyntaxKind.ConstructorDeclaration);
         }
 
         private void AnalyzeSymbol(SyntaxNodeAnalysisContext context, SyntaxNode parametersyntax)

@@ -10,7 +10,7 @@ namespace SIGGuidelines.Metrics
     {
         public CyclomaticComplexityMetric(SyntaxNode node)
         {
-            Complexity = calculateComplexity(node);
+            this.Complexity = CalculateComplexity(node);
         }
 
         private static readonly SyntaxKind[] ComplexityIncreasingBinaryExpressionKinds =
@@ -20,13 +20,12 @@ namespace SIGGuidelines.Metrics
             SyntaxKind.CoalesceExpression
         };
 
-        private static int calculateComplexity(SyntaxNode MethodDeclaration)
+        private static int CalculateComplexity(SyntaxNode methodDeclaration)
         {
-            var complexityNodes = MethodDeclaration.DescendantNodes().Where(node => IsComplexityIncreasingNode(node));
+            var complexityNodes = methodDeclaration.DescendantNodes().Where(node => IsComplexityIncreasingNode(node));
             int complexity = 1 + complexityNodes.Count();
             return complexity;
         }
-
 
         public int Complexity
         {
@@ -34,7 +33,7 @@ namespace SIGGuidelines.Metrics
             private set;
         }
 
-        private static Boolean IsComplexityIncreasingNode(SyntaxNode node) =>
+        private static bool IsComplexityIncreasingNode(SyntaxNode node) =>
             node is IfStatementSyntax ||
             node is ForEachStatementSyntax ||
             node is CatchClauseSyntax ||
@@ -45,11 +44,10 @@ namespace SIGGuidelines.Metrics
             node is GotoStatementSyntax ||
             IsSwitchCaseStatement(node) ||
             IsBinaryExpression(node);
-            
-        private static Boolean IsSwitchCaseStatement(SyntaxNode node) => 
-            (node is SwitchSectionSyntax && !(node as SwitchSectionSyntax).Labels.Any(l => l.Kind() == SyntaxKind.DefaultSwitchLabel));
+
+        private static bool IsSwitchCaseStatement(SyntaxNode node) =>
+            node is SwitchSectionSyntax && !(node as SwitchSectionSyntax).Labels.Any(l => l.Kind() == SyntaxKind.DefaultSwitchLabel);
 
         private static bool IsBinaryExpression(SyntaxNode node) => ComplexityIncreasingBinaryExpressionKinds.Contains(node.Kind());
-
     }
 }

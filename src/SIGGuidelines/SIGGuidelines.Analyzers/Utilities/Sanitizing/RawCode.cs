@@ -1,23 +1,17 @@
-﻿using System;
-
-namespace SIGGuidelines.Utilities.Sanitizing
+﻿namespace SIGGuidelines.Utilities.Sanitizing
 {
     public class RawCode : CodeSanitizerBase
     {
-        public String code;
-        public RawCode(String code)
+        private readonly string code;
+
+        public RawCode(string code)
         {
             this.code = code;
         }
 
-        public override string getRawCode()
+        public override string Sanitize()
         {
-            return code;
-        }
-
-        public override string getSanitizedCode()
-        {
-            return getRawCode();
+            return this.code;
         }
     }
 }

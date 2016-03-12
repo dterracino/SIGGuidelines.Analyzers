@@ -88,7 +88,6 @@ namespace SIGGuidelines.Analyzers.Tests.Metrics
             ComplexityOf(MethodWithBody("try{}catch{}")).Should().Be(2);
         }
 
-
         [TestMethod]
         public void SwitchStatementTest()
         {
@@ -99,10 +98,10 @@ namespace SIGGuidelines.Analyzers.Tests.Metrics
         }
 
         private static int ComplexityOf(SyntaxNode method) => new CyclomaticComplexityMetric(method).Complexity;
-        
-        private static SyntaxNode MethodWithBody(String source)
+
+        private static SyntaxNode MethodWithBody(string source)
         {
-            var tree = CSharpSyntaxTree.ParseText(String.Concat("class t{ void m(){ " ,source, "} }"), new CSharpParseOptions(LanguageVersion.CSharp6, DocumentationMode.None, SourceCodeKind.Regular));
+            var tree = CSharpSyntaxTree.ParseText(string.Concat("class t{ void m(){ ", source, "} }"), new CSharpParseOptions(LanguageVersion.CSharp6, DocumentationMode.None, SourceCodeKind.Regular));
             var method = tree.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>().First();
             return method;
         }

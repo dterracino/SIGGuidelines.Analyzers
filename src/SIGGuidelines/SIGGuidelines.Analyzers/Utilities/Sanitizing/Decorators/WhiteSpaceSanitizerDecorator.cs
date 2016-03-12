@@ -2,7 +2,9 @@
 {
     public class WhiteSpaceSanitizerDecorator : RegexCodeSanitizerDecorator
     {
-        public WhiteSpaceSanitizerDecorator(CodeSanitizerBase parent) : base(@"^\s+$[\r\n]*", true,parent) { }
-
+        public WhiteSpaceSanitizerDecorator(CodeSanitizerBase parent)
+            : base(@"^\s+$[\r\n]*", true, parent)
+        {
+        }
     }
 }

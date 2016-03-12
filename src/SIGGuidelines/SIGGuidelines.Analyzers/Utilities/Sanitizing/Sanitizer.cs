@@ -1,22 +1,19 @@
-﻿using System;
-using SIGGuidelines.Utilities.Sanitizing.Decorators;
+﻿using SIGGuidelines.Utilities.Sanitizing.Decorators;
 
 namespace SIGGuidelines.Utilities.Sanitizing
 {
     public class Sanitizer
     {
-
-        public String Sanitize(String rawCode)
+        public string Sanitize(string rawCode)
         {
-            CodeSanitizerBase code = new RawCode(rawCode);
-
-            code = new CStyleCommentSanitizerDecorator(code);
-            code = new UsingSanitizerDecorator(code);
-            code = new CompilerDirectiveSanitizerDecorator(code);
-            code = new WhiteSpaceSanitizerDecorator(code);
-            String sanitizedCode = code.getSanitizedCode();
-
+            var sanitizer = AsCSharpSanitizer(new RawCode(rawCode));
+            string sanitizedCode = sanitizer.Sanitize();
             return sanitizedCode;
+        }
+
+        private static CodeSanitizerBase AsCSharpSanitizer(CodeSanitizerBase sanitizer)
+        {
+            return new WhiteSpaceSanitizerDecorator(new CompilerDirectiveSanitizerDecorator(new UsingSanitizerDecorator(new CStyleCommentSanitizerDecorator(sanitizer))));
         }
     }
 }

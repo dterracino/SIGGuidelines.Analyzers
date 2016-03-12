@@ -27,9 +27,9 @@ namespace SIGGuidelines.Analyzers.Tests.Metrics
 
         private static int ParameterValueOf(SyntaxNode method) => new UnitInterfacingMetric(method).Parameters;
 
-        private static SyntaxNode MethodWithSignature(String signature)
+        private static SyntaxNode MethodWithSignature(string signature)
         {
-            var tree = CSharpSyntaxTree.ParseText(String.Concat("class t{ ",signature,"{} }"), new CSharpParseOptions(LanguageVersion.CSharp6, DocumentationMode.None, SourceCodeKind.Regular));
+            var tree = CSharpSyntaxTree.ParseText(string.Concat("class t{ ", signature, "{} }"), new CSharpParseOptions(LanguageVersion.CSharp6, DocumentationMode.None, SourceCodeKind.Regular));
             var method = tree.GetRoot().DescendantNodes().OfType<MethodDeclarationSyntax>().First();
             return method;
         }

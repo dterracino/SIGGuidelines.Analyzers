@@ -1,25 +1,25 @@
-﻿using System;
-
-namespace SIGGuidelines.Utilities
+﻿namespace SIGGuidelines.Utilities
 {
     public class LineCounter
     {
-        public LineCounter(String Text)
+        public LineCounter(string text)
         {
-            NumberOfLines = countLines(Text);
+            this.NumberOfLines = CountLines(text);
         }
 
         public long NumberOfLines { get; private set; }
 
-        private static long countLines(String Code)
+        private static long CountLines(string code)
         {
-            Code = Code.Trim();
+            code = code.Trim();
             long count = 1;
             int position = -1;
-            while ((position = Code.IndexOf('\n', position + 1)) != -1)
+
+            while ((position = code.IndexOf('\n', position + 1)) != -1)
             {
                 count++;
             }
+
             return count;
         }
     }

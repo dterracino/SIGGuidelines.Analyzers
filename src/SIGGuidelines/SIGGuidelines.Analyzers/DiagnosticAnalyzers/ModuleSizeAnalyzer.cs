@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Diagnostics;
-using System;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using System.Collections.Immutable;
@@ -7,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SIGGuidelines.Utilities.Sanitizing;
 using SIGGuidelines.Utilities;
 
-namespace SIGGuidelines.Analyzers
+namespace SIGGuidelines.Analyzers.DiagnosticAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ModuleSizeAnalyzer : DiagnosticAnalyzer
@@ -27,14 +26,14 @@ namespace SIGGuidelines.Analyzers
 
         public override void Initialize(AnalysisContext context) => context.RegisterSyntaxTreeAction(AnalyzeSymbol);
 
-        private void AnalyzeSymbol(SyntaxTreeAnalysisContext context)
+        private static void AnalyzeSymbol(SyntaxTreeAnalysisContext context)
         {
             var classes = context.Tree.GetRoot().DescendantNodes().OfType<BaseTypeDeclarationSyntax>();
 
             foreach (var @class in classes)
             {
-                String text = @class.GetText().ToString();
-                String sanitizedText = new Sanitizer().Sanitize(text);
+                string text = @class.GetText().ToString();
+                string sanitizedText = new Sanitizer().Sanitize(text);
                 long moduleSize = new LineCounter(sanitizedText).NumberOfLines;
 
                 if (moduleSize > MaxModuleSize)

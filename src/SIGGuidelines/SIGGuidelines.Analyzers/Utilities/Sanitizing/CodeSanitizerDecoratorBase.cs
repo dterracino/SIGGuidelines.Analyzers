@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SIGGuidelines.Utilities.Sanitizing
+﻿namespace SIGGuidelines.Utilities.Sanitizing
 {
     public abstract class CodeSanitizerDecoratorBase : CodeSanitizerBase
     {
@@ -13,21 +7,15 @@ namespace SIGGuidelines.Utilities.Sanitizing
             this.parentSanitizer = parentSanitizer;
         }
 
-        private CodeSanitizerBase parentSanitizer;
+        private readonly CodeSanitizerBase parentSanitizer;
 
-        public override string getRawCode()
+        public override string Sanitize()
         {
-            return parentSanitizer.getRawCode();
-        }
-
-        public override string getSanitizedCode()
-        {
-            String code = parentSanitizer.getSanitizedCode();
-            String sanitizedCode =  Sanitize(code);
+            string code = this.parentSanitizer.Sanitize();
+            string sanitizedCode = this.Sanitize(code);
             return sanitizedCode;
         }
 
-        public abstract String Sanitize(String input);
-
+        public abstract string Sanitize(string input);
     }
 }

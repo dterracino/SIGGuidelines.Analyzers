@@ -5,12 +5,11 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using SIGGuidelines.Metrics;
 using System.Collections.Immutable;
 
-namespace SIGGuidelines.Analyzers
+namespace SIGGuidelines.Analyzers.DiagnosticAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class UnitComplexityAnalyzer : DiagnosticAnalyzer
     {
-
         internal const int MaxBranchPoints = 4;
         internal const string DiagnosticId = "SIG2";
         internal const string Description = "SIG2 - Write simple units of code: limit the number of branch points per method";
@@ -26,11 +25,11 @@ namespace SIGGuidelines.Analyzers
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as MethodDeclarationSyntax).Identifier), SyntaxKind.MethodDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as PropertyDeclarationSyntax).Identifier), SyntaxKind.PropertyDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as ConstructorDeclarationSyntax).Identifier), SyntaxKind.ConstructorDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as IndexerDeclarationSyntax).ThisKeyword), SyntaxKind.IndexerDeclaration);
-            context.RegisterSyntaxNodeAction((c) => AnalyzeSymbol(c, (c.Node as OperatorDeclarationSyntax).OperatorToken), SyntaxKind.OperatorDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as MethodDeclarationSyntax).Identifier), SyntaxKind.MethodDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as PropertyDeclarationSyntax).Identifier), SyntaxKind.PropertyDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as ConstructorDeclarationSyntax).Identifier), SyntaxKind.ConstructorDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as IndexerDeclarationSyntax).ThisKeyword), SyntaxKind.IndexerDeclaration);
+            context.RegisterSyntaxNodeAction((c) => this.AnalyzeSymbol(c, (c.Node as OperatorDeclarationSyntax).OperatorToken), SyntaxKind.OperatorDeclaration);
         }
 
         private void AnalyzeSymbol(SyntaxNodeAnalysisContext context, SyntaxToken identifier)

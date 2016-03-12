@@ -6,7 +6,7 @@
     <title>SIGGuidelines.Analyzers</title>
     <authors>Pepijn van de Kamp</authors>
     <owners>Pepijn van de Kamp</owners>
-    <projectUrl>https://github.com/p3pijn/WritingMaintainableSoftware-Analyzers</projectUrl>
+    <projectUrl>https://github.com/p3pijn/SIGGuidelines.Analyzers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SIGGuidelines.Analyzers</description>
     <releaseNotes></releaseNotes>
@@ -19,6 +19,6 @@
   <!-- The convention for analyzers is to put language agnostic dlls in analyzers\portable50 and language specific analyzers in either analyzers\portable50\cs or analyzers\portable50\vb -->
   <files>
     <file src="*.dll" target="analyzers\dotnet\cs" exclude="**\Microsoft.CodeAnalysis.*;**\System.Collections.Immutable.*;**\System.Reflection.Metadata.*;**\System.Composition.*" />
-    <file src="tools\*.ps1" target="tools\" />
+    <file src="InstallTools\*.ps1" target="InstallTools\" />
   </files>
 </package>

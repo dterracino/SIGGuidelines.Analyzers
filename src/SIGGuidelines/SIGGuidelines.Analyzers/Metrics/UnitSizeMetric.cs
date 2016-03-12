@@ -10,41 +10,43 @@ namespace SIGGuidelines.Metrics
     {
         public UnitSizeMetric(SyntaxNode unitNode)
         {
-            String rawCode = extractRawCode(unitNode);
+            string rawCode = ExtractRawCode(unitNode);
             var sanitizedCode = new Sanitizer().Sanitize(rawCode);
 
             LineCounter counter = new LineCounter(sanitizedCode);
-            Size = counter.NumberOfLines;
+            this.Size = counter.NumberOfLines;
         }
 
-        private static String extractRawCode(SyntaxNode Node)
+        private static string ExtractRawCode(SyntaxNode node)
         {
-            String rawCode = null;
+            string rawCode = null;
 
-            //long if-chain due to poor abstraction of Body and ExpressionBody properties in the Roslyn public API
-            if (Node is MethodDeclarationSyntax)
+            // long if-chain due to poor abstraction of Body and ExpressionBody properties in the Roslyn public API
+            if (node is MethodDeclarationSyntax)
             {
-                rawCode = (Node as MethodDeclarationSyntax).Body?.GetText().ToString() ?? (Node as MethodDeclarationSyntax).ExpressionBody?.GetText().ToString();
+                rawCode = (node as MethodDeclarationSyntax).Body?.GetText().ToString() ?? (node as MethodDeclarationSyntax).ExpressionBody?.GetText().ToString();
             }
-            else if (Node is BasePropertyDeclarationSyntax)
+            else if (node is BasePropertyDeclarationSyntax)
             {
-                rawCode = (Node as BasePropertyDeclarationSyntax).AccessorList?.GetText().ToString();
+                rawCode = (node as BasePropertyDeclarationSyntax).AccessorList?.GetText().ToString();
             }
-            else if (Node is ConstructorDeclarationSyntax)
+            else if (node is ConstructorDeclarationSyntax)
             {
-                rawCode = (Node as ConstructorDeclarationSyntax).Body?.GetText().ToString();
+                rawCode = (node as ConstructorDeclarationSyntax).Body?.GetText().ToString();
             }
-            else if (Node is OperatorDeclarationSyntax)
+            else if (node is OperatorDeclarationSyntax)
             {
-                rawCode = (Node as OperatorDeclarationSyntax).Body?.GetText().ToString() ?? (Node as OperatorDeclarationSyntax).ExpressionBody?.GetText().ToString();
+                rawCode = (node as OperatorDeclarationSyntax).Body?.GetText().ToString() ?? (node as OperatorDeclarationSyntax).ExpressionBody?.GetText().ToString();
             }
             else
             {
-                throw new NotSupportedException(String.Format("Unit size could not be determined of node with kind '{0}'", Node.RawKind));
+                throw new NotSupportedException(string.Format("Unit size could not be determined of node with kind '{0}'", node.RawKind));
             }
 
-            if (String.IsNullOrEmpty(rawCode))
+            if (string.IsNullOrEmpty(rawCode))
+            {
                 return string.Empty;
+            }
 
             return rawCode;
         }
