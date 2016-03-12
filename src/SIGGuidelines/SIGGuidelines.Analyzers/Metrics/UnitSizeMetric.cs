@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using SIGGuidelines.Utilities;
 using SIGGuidelines.Utilities.Sanitizing;
+using System.Linq;
 
 namespace SIGGuidelines.Metrics
 {
@@ -19,37 +20,30 @@ namespace SIGGuidelines.Metrics
 
         private static string ExtractRawCode(SyntaxNode node)
         {
-            string rawCode = null;
-
-            // long if-chain due to poor abstraction of Body and ExpressionBody properties in the Roslyn public API
-            if (node is MethodDeclarationSyntax)
+            if (HasBody(node))
             {
-                rawCode = (node as MethodDeclarationSyntax).Body?.GetText().ToString() ?? (node as MethodDeclarationSyntax).ExpressionBody?.GetText().ToString();
+                return ContentsOf<BlockSyntax>(node);
             }
-            else if (node is BasePropertyDeclarationSyntax)
+            else if (HasExpressionBody(node))
             {
-                rawCode = (node as BasePropertyDeclarationSyntax).AccessorList?.GetText().ToString();
+                return ContentsOf<ArrowExpressionClauseSyntax>(node);
             }
-            else if (node is ConstructorDeclarationSyntax)
+            else if (HasAccessorList(node))
             {
-                rawCode = (node as ConstructorDeclarationSyntax).Body?.GetText().ToString();
-            }
-            else if (node is OperatorDeclarationSyntax)
-            {
-                rawCode = (node as OperatorDeclarationSyntax).Body?.GetText().ToString() ?? (node as OperatorDeclarationSyntax).ExpressionBody?.GetText().ToString();
-            }
-            else
-            {
-                throw new NotSupportedException(string.Format("Unit size could not be determined of node with kind '{0}'", node.RawKind));
+                return ContentsOf<AccessorListSyntax>(node);
             }
 
-            if (string.IsNullOrEmpty(rawCode))
-            {
-                return string.Empty;
-            }
-
-            return rawCode;
+            return string.Empty;
         }
+
+        private static bool HasBody(SyntaxNode node) => node.ChildNodes().OfType<BlockSyntax>().Any();
+
+        private static bool HasExpressionBody(SyntaxNode node) => node.ChildNodes().OfType<ArrowExpressionClauseSyntax>().Any();
+
+        private static bool HasAccessorList(SyntaxNode node) => node.ChildNodes().OfType<AccessorListSyntax>().Any();
+
+        private static string ContentsOf<T>(SyntaxNode node)
+            where T : SyntaxNode => node.ChildNodes().OfType<T>().First().GetText().ToString();
 
         public long Size
         {
