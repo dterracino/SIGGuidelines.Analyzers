@@ -46,7 +46,7 @@ I felt the other guidelines are either well supported by other tools, or less su
 I can recommend [SonarLint for Visual Studio](http://www.sonarlint.org/visualstudio/) for a set of analyzers that find many code smells in C# code.
 
 ## Disclaimer
-These diagnostic analyzers in this repository are just my personal interpretation of the guidelines presented in the book. Feel free to use and adjust these analyzers or source code as you like. Feedback is of course appreciated, you can reach me at [@p3pijn](https://twitter.com/p3pijn).
+The diagnostic analyzers in this repository are just my personal interpretation of the guidelines presented in the book. Feel free to use and adjust these analyzers or source code as you like. Feedback is of course appreciated, you can reach me at [@p3pijn](https://twitter.com/p3pijn).
 
 
 
