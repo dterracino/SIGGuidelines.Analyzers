@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGGuidelines.Analyzers", "SIGGuidelines.Analyzers\SIGGuidelines.Analyzers.csproj", "{D54C6716-4511-424A-A83D-DD3FB4E2F6B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIGGuidelines.Analyzers.Tests", "SIGGuidelines.Analyzers.Tests\SIGGuidelines.Analyzers.Tests.csproj", "{CD706D27-83DC-4BC5-8769-56D02C37718C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D54C6716-4511-424A-A83D-DD3FB4E2F6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54C6716-4511-424A-A83D-DD3FB4E2F6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54C6716-4511-424A-A83D-DD3FB4E2F6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54C6716-4511-424A-A83D-DD3FB4E2F6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD706D27-83DC-4BC5-8769-56D02C37718C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD706D27-83DC-4BC5-8769-56D02C37718C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD706D27-83DC-4BC5-8769-56D02C37718C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD706D27-83DC-4BC5-8769-56D02C37718C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
