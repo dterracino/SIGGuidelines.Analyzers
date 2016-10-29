@@ -6,13 +6,14 @@ NEWS Oct 1. 2016: This project will soon be transfered to a [BetterCodeHub.com](
 
 [![Build status](https://ci.appveyor.com/api/projects/status/f260wpgmyiva86it?svg=true)](https://ci.appveyor.com/project/p3pijn/sigguidelines-analyzers)
 [![BCH compliancy](http://bettercodehub.com/edge/badge/p3pijn/SIGGuidelines.Analyzers)](https://bettercodehub.com)
+[![NuGet](https://img.shields.io/nuget/v/SIGGuidelines.Analyzers.svg)](https://www.nuget.org/packages/SIGGuidelines.Analyzers/)
 
 
 ## A set of diagnostic analyzers inspired by the book: Building Maintainable Software
 `SIGGuidelines.Analyzers` is a Visual Studio 2015 extension that provides on-the-fly feedback to developers on violations in `C#` code to a subset of the guidelines presented in the book [Building Maintainable Software](http://shop.oreilly.com/product/0636920049159.do) by Joost Visser and other consultants from the [Software Improvement Group](https://www.sig.eu). 
 
 ## Installation
-To install SIGGuidelines.Analyzers package to your project, run the following command in the Package Manager Console:
+To install SIGGuidelines.Analyzers package to your project, run the following command in the Nuget Package Manager Console:
 
 `Install-Package SIGGuidelines.Analyzers`
 
